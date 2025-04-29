@@ -4,131 +4,182 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Junpeng Gai - CV</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            background-color: #f4f6f8;
-            color: #333;
-        }
-        h1, h2 {
-            color: #2c3e50;
-        }
-        a {
-            color: #3498db;
-            text-decoration: none;
-        }
-        .section {
-            margin-bottom: 40px;
-        }
-        .info {
-            margin-bottom: 10px;
-        }
-        ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        li {
-            margin-bottom: 8px;
-        }
-        .core-competency {
-            font-style: italic;
-            color: #555;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1>Junpeng Gai</h1>
+    <div class="container">
+        <header>
+            <h1>Junpeng Gai</h1>
+            <p>Email: <a href="mailto:gjpwewq@hotmail.com">gjpwewq@hotmail.com</a></p>
+            <p>Phone: +1 (514) 770-3128</p>
+            <p>
+                <a href="https://github.com/jeo33" target="_blank">GitHub</a> |
+                <a href="https://linkedin.com/in/junpeng-gai-2a7745a6" target="_blank">LinkedIn</a>
+            </p>
+        </header>
 
-    <div class="info">
-        <p>Email: <a href="mailto:gjpwewq@hotmail.com">gjpwewq@hotmail.com</a></p>
-        <p>Phone: +1 (514) 770-3128</p>
-        <p>GitHub: <a href="https://github.com/jeo33" target="_blank">github.com/jeo33</a></p>
-        <p>LinkedIn: <a href="https://linkedin.com/in/junpeng-gai-2a7745a6" target="_blank">linkedin.com/in/junpeng-gai-2a7745a6</a></p>
+        <!-- Skills -->
+<section class="section">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+        <div class="skill-card">
+            <h3>System Environments</h3>
+            <p>Windows, Linux, RTOS (QNX)</p>
+        </div>
+        <div class="skill-card">
+            <h3>Development Tools</h3>
+            <p>Visual Studio, PyCharm, VS Code, Eclipse, Vivado, Modelsim, Keil µVision, Arduino, QNX Momentics IDE</p>
+        </div>
+        <div class="skill-card">
+            <h3>Programming Languages</h3>
+            <p>C/C++, Python, SQL, VHDL, System Verilog, Matlab</p>
+        </div>
+        <div class="skill-card">
+            <h3>Version Control</h3>
+            <p>Git, SVN (TortoiseSVN), GitHub</p>
+        </div>
+        <div class="skill-card">
+            <h3>Automation</h3>
+            <p>Shell/Bash Scripting</p>
+        </div>
+        <div class="skill-card">
+            <h3>Protocols</h3>
+            <p>I2C, SPI, UART, TCP/IP, UDP</p>
+        </div>
     </div>
+</section>
 
-    <div class="section">
-        <h2>Skills</h2>
-        <ul>
-            <li><strong>System Environments:</strong> Windows, Linux, RTOS (QNX)</li>
-            <li><strong>Development Tools:</strong> Visual Studio, PyCharm, VS Code, Eclipse, Vivado, ModelSim, Keil µVision, Arduino, QNX Momentics IDE</li>
-            <li><strong>Programming Languages:</strong> C/C++, Python, SQL, VHDL, SystemVerilog, Matlab</li>
-            <li><strong>Version Control:</strong> Git, SVN (TortoiseSVN)</li>
-            <li><strong>Automation:</strong> Shell/Bash Scripting</li>
-            <li><strong>Protocols:</strong> I2C, SPI, UART, TCP/IP, UDP</li>
-        </ul>
-    </div>
 
-    <div class="section">
-        <h2>Education</h2>
-        <p><strong>Bachelor of Engineering – Computer Engineering Co-op</strong><br>2021–2025<br>Concordia University, Montreal, QC</p>
-        <ul>
-            <li>Member of the Institute for Co-operative Education</li>
-            <li>GPA: 4.0/4.30</li>
-            <li>Courses: Data Structure and Algorithm, Digital Systems Design, Programming Methodology, Computer Organization and Software, Continuous and Discrete Time Signals and Systems</li>
-        </ul>
-    </div>
+        <!-- Education -->
+        <section class="section">
+            <h2>Education</h2>
+            <p><strong>Bachelor of Engineering – Computer Engineering Co-op</strong><br>2021 - 2025<br>Concordia University, Montreal, QC</p>
+            <ul class="list">
+                <li>Member of the Institute for Co-operative Education</li>
+                <li>GPA: 4.0/4.30</li>
+                <li>Courses: Data structure and algorithm, Digital Systems Design, Programming Methodology, Computer Organization and Software, Continuous and Discrete Time Signals and Systems</li>
+            </ul>
+        </section>
 
-    <div class="section">
-        <h2>Work Experience</h2>
-        <p><strong>Python Developer for Mechanical/Aeronautical Engineering Applications</strong><br>Bombardier Inc, Montreal, QC (Jan 2024 – Jun 2024)</p>
-        <ul>
-            <li>Automated updates for interdependent Excel files using Python and pandas.</li>
-            <li>Maintained equations and dependencies across multiple files using recursive tree structure.</li>
-            <li>Streamlined workflows, reducing manual effort and improving accuracy.</li>
-            <li class="core-competency">Core Competencies: Automation, data processing with Python/pandas, recursive algorithms, workflow optimization.</li>
-        </ul>
+        <!-- Work Experience -->
+        <section class="section">
+            <h2>Work Experience</h2>
+            <div class="grid-wrapper">
 
-        <p><strong>C++ Developer for Mechanical/Aeronautical Engineering Applications</strong><br>Bombardier Inc, Montreal, QC (Sep 2023 – Jan 2024)</p>
-        <ul>
-            <li>Developed and enhanced a console application in C++ to process binary data from Nastran software.</li>
-            <li>Migrated application to 64-bit architecture and integrated Python via DLLs.</li>
-            <li class="core-competency">Core Competencies: C++ development, debugging, binary file processing, CMake.</li>
-        </ul>
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Python Developer - Bombardier</h3>
+                        <p>2024.1 – 2024.6 | Montreal, QC</p>
+                        <ul>
+                            <li>Automated updates for Excel files using Python and pandas.</li>
+                            <li>Maintained table dependencies using recursive algorithms.</li>
+                            <li>Streamlined design workflows.</li>
+                        </ul>
+                        <p class="core-competency">Automation, pandas, workflow optimization.</p>
+                    </div>
+                </div>
 
-        <p><strong>Teaching Assistant (ENGR213 & ENGR233)</strong><br>Concordia University, Montreal, QC (2022–2023)</p>
-        <ul>
-            <li>Assisted in Applied Ordinary Differential Equations and Applied Advanced Calculus courses.</li>
-            <li>Helped develop course materials, held office hours, and review sessions.</li>
-            <li class="core-competency">Core Competencies: Communication, organization, prioritization.</li>
-        </ul>
-    </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3>C++ Developer - Bombardier</h3>
+                        <p>2023.9 – 2024.1 | Montreal, QC</p>
+                        <ul>
+                            <li>Enhanced console app to process Nastran binary data.</li>
+                            <li>Migrated from 32-bit to 64-bit architecture.</li>
+                            <li>Exported C++ functions for Python DLL use.</li>
+                        </ul>
+                        <p class="core-competency">C++, binary data processing, CMake.</p>
+                    </div>
+                </div>
 
-    <div class="section">
-        <h2>Projects</h2>
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Teaching Assistant (ENGR213 & ENGR233)</h3>
+                        <p>2022 – 2023 | Concordia University</p>
+                        <ul>
+                            <li>Assisted in Differential Equations and Advanced Calculus courses.</li>
+                            <li>Held office hours and review sessions.</li>
+                        </ul>
+                        <p class="core-competency">Communication, organizational skills.</p>
+                    </div>
+                </div>
 
-        <p><strong>Search and Rescue Quadruped Robot (Capstone 1st Place Prize)</strong><br>Concordia University, Montreal, QC (2023–2024)</p>
-        <ul>
-            <li>Designed a 1:10 scale quadruped robot with joystick control and a winch.</li>
-            <li>Developed Python-based control software for movement and bidirectional communication.</li>
-            <li>Integrated LiPo batteries, IMU, Lidar, and PCB-based power management.</li>
-            <li class="core-competency">Core Competencies: Robotics design, Python control systems, hardware-software integration.</li>
-        </ul>
+            </div>
+        </section>
 
-        <p><strong>Portable Safety Monitor - Embedded System with Mobile App Integration</strong><br>Concordia University, Montreal, QC (2021)</p>
-        <ul>
-            <li>Real-time monitoring system for firefighters with Arduino and Android integration.</li>
-            <li>Used Wi-Fi, Bluetooth, and GSM for hardware-app communication.</li>
-            <li class="core-competency">Core Competencies: Mobile app development (Android Studio, Kotlin/Java), object-oriented programming.</li>
-        </ul>
+        <!-- Projects -->
+        <section class="section">
+            <h2>Projects</h2>
+            <div class="grid-wrapper">
 
-        <p><strong>Self-Navigating Hovercraft Using Atmega328p</strong><br>Concordia University, Montreal, QC (2022)</p>
-        <ul>
-            <li>Programmed motor controls using Atmega328p and Arduino.</li>
-            <li>Utilized IR, ultrasonic sensors, and IMU for navigation; communicated via I2C and UART.</li>
-            <li class="core-competency">Core Competencies: Embedded systems, motor control, sensor integration, communication protocols.</li>
-        </ul>
-    </div>
+                <div class="card">
+                    <img src="resources/Weixin Screenshot_20250428202626.png" alt="Search and Rescue Robot" class="card-img">
+                    <div class="card-content">
+                        <h3>Search and Rescue Quadruped Robot</h3>
+                        <p>2023-2024 | Concordia University</p>
+                        <ul>
+                            <li>Designed a quadruped robot with joystick control and winch system.</li>
+                            <li>Integrated LiPo batteries, IMU, Lidar, and PCBs.</li>
+                        </ul>
+                        <a href="https://github.com/jeo33/490_Capstone_Quadruped_Robot/tree/main" class="btn" target="_blank">View Project</a>
+                    </div>
+                </div>
 
-    <div class="section">
-        <h2>Awards & Distinctions</h2>
-        <ul>
-            <li>JLL Woman in Real Estate Scholarship (2022)</li>
-            <li>Alternating Faculty Scholarship (2023)</li>
-            <li>Dean’s List (Academic Year GPA 4.24) (2021–2022)</li>
-            <li>Dean’s List (Term GPA 4.3) (2024)</li>
-        </ul>
+                <div class="card">
+                    <img src="resources/Weixin Screenshot_20250428201529.png" alt="Portable Safety Monitor" class="card-img">
+                    <div class="card-content">
+                        <h3>Portable Safety Monitor</h3>
+                        <p>2021 | Concordia University</p>
+                        <ul>
+                            <li>Real-time monitoring system for firefighters using Arduino and sensors.</li>
+                            <li>Built Android app for GPS tracking and sensor visualization.</li>
+                        </ul>
+                        <a href="https://github.com/jeo33/ELEC-COEN390-Arduino/tree/main" class="btn" target="_blank">View Project</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="resources/Weixin Screenshot_20250428202120.png" alt="Self-Navigating Hovercraft" class="card-img">
+                    <div class="card-content">
+                        <h3>Self-Navigating Hovercraft</h3>
+                        <p>2022 | Concordia University</p>
+                        <ul>
+                            <li>Designed hovercraft navigation system with Atmega328p.</li>
+                            <li>Used IR, ultrasonic, and IMU sensors for control.</li>
+                        </ul>
+                        <a href="https://github.com/jeo33/Second_Year_Practice/tree/COEN352/ENGR290" class="btn" target="_blank">View Project</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="resources/game2.png" alt="Anya Theme Snake Game" class="card-img">
+                    <div class="card-content">
+                        <h3>Anya Theme Snake Game</h3>
+                        <p>2025 | Concordia University</p>
+                        <ul>
+                            <li>Developed a custom Anya-themed Snake Game using Java Swing.</li>
+                            <li>Implemented special apple types (Stella, Mama, Baba) with dynamic speed effects.</li>
+                            <li>Created smooth animations, custom Anya body parts, and live score tracking.</li>
+                        </ul>
+                        <a href="https://github.com/jeo33/SnakeGame/tree/main" class="btn" target="_blank">View Project</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Awards -->
+        <section class="section">
+            <h2>Awards & Distinctions</h2>
+            <ul class="list">
+                <li>JLL Woman in Real Estate Scholarship (2022)</li>
+                <li>Alternating Faculty Scholarship (2023)</li>
+                <li>Dean’s List (Academic Year GPA 4.24) (2021 - 2022)</li>
+                <li>Dean’s List (Term GPA 4.3) (2024)</li>
+            </ul>
+        </section>
+
     </div>
 
 </body>
