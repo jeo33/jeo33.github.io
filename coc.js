@@ -196,9 +196,9 @@ const entity_img="resources/img/"
           showError(`Error ${xhr.status}: ${xhr.statusText}`);
         }
       };
-      xhr.onerror = () => {
-        showError('Network error');
-      };
+      // xhr.onerror = () => {
+      //   showError('Network error');
+      // };
       xhr.send();
     }
 
