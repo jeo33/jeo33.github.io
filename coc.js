@@ -1,4 +1,4 @@
-const API_BASE = 'http://35.183.68.100:5000';
+const API_BASE = 'https://35.183.68.100:5000';
 const entity_img="resources/img/"
     const btn = document.getElementById('searchBtn');
     const input = document.getElementById('tagInput');
