@@ -186,7 +186,7 @@ const entity_img="resources/img/"
         }
       };
       xhr.onerror = () => {
-        showError('Network error');
+      showError('Network error');
       };
       xhr.send();
     }
