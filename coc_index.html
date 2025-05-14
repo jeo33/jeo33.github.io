@@ -6,6 +6,40 @@
   <title>COC Village Profile Search</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
+    /* ==== Menu Bar Styles ==== */
+.navbar {
+  position: fixed;      /* stick to top */
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #007bff;
+  color: #fff;
+  padding: 0 1rem;
+  z-index: 1000;
+}
+.navbar .brand {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.navbar nav ul {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+}
+.navbar nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem;
+}
+.navbar nav a:hover {
+  background: rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
     body {
       font-family: 'Roboto', sans-serif;
       margin: 0;
@@ -53,8 +87,6 @@
       text-align: center;
       margin-bottom: 1rem;
     }
-
-    /* Profile table at top (full width) */
     #profileTable {
       width: 100%;
       border-collapse: collapse;
@@ -71,8 +103,6 @@
       color: #fff;
       font-weight: 600;
     }
-
-    /* Bottom row of five tables */
     .bottom-tables {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -105,8 +135,23 @@
   </style>
 </head>
 <body>
+
+  <!-- Top Menu Bar -->
+  <header class="navbar" id="navbar">
+    <div class="brand">COC Stats</div>
+    <div class="toggle" id="navToggle">☰</div>
+    <nav>
+      <ul>
+        <li><a href="coc_index.html">Search</a></li>
+        <li id="stats" hidden><a  href="mystats.html" >My Stats</a></li>
+        <li id="navLogin"><a href="login.html">Log in</a></li>
+        <li id="navLogout" hidden>Log out</a></li>
+      </ul>
+    </nav>
+  </header>
+
   <div class="container">
-    <h1>Clash of Clans Profile Lookup</h1>
+    <h1 id="search">Clash of Clans Profile Lookup</h1>
 
     <div class="search-box">
       <input id="tagInput" placeholder="#8YCYYQ2R" />
@@ -147,6 +192,38 @@
     </div>
   </div>
 
+  <script>
+    // Toggle menu on small screens
+    document.getElementById('navToggle').addEventListener('click', () => {
+      document.getElementById('navbar').classList.toggle('nav-open');
+    });
+    document.getElementById('navLogout').addEventListener('click',()=>{
+      localStorage.removeItem('username');
+      window.location.href = 'coc_index.html';
+    })
+  document.addEventListener('DOMContentLoaded', () => {
+    const navLogout = document.getElementById('navLogout');
+    const navLogin = document.getElementById('navLogin');
+    const stats = document.getElementById('stats');
+    const storedUser = localStorage.getItem('username');
+    if (storedUser) {
+      navLogin.innerHTML = `<a href="#">${storedUser}</a>`;
+      stats.hidden = false;
+      navLogout.hidden=false;
+    }
+    else{
+      stats.hidden=true;
+      navLogin.hidden=false;
+      navLogout.hidden=true;
+    }
+
+    // expose the helper so login.js can call it (if you were doing inline login)
+    window.setUsernameNav = (storedUser) => {
+      localStorage.setItem('username', storedUser);
+      navLogin.innerHTML = `<a href="#">${storedUser}</a>`;
+    };
+  });
+  </script>
   <script src="./coc.js"></script>
 </body>
 </html>

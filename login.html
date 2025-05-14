@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>COC Login / Register</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    /* ==== Menu Bar Styles ==== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #007bff;
+      color: #fff;
+      padding: 0 1rem;
+      z-index: 1000;
+      font-family: 'Roboto', sans-serif;
+    }
+    .navbar .brand { font-size: 1.25rem; font-weight: 700; }
+    .navbar nav ul { display: flex; gap: 1rem; list-style: none; margin: 0; padding: 0; }
+    .navbar nav a { color: #fff; text-decoration: none; padding: 0.5rem; }
+    .navbar nav a:hover { background: rgba(255,255,255,0.2); border-radius: 4px; }
+
+    /* ==== Form Container ==== */
+    body { margin: 0; padding-top: 3.5rem; background: #f0f2f5; font-family: 'Roboto', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; }
+    .form-wrapper { background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); width: 360px; }
+    .form-tabs { display: flex; margin-bottom: 1.5rem; border-bottom: 2px solid #e0e0e0; }
+    .form-tabs button { flex: 1; padding: 0.75rem; background: none; border: none; font-size: 1rem; cursor: pointer; transition: color 0.2s; }
+    .form-tabs button.active { color: #007bff; border-bottom: 2px solid #007bff; }
+    form { display: none; flex-direction: column; }
+    form.active { display: flex; }
+    label { margin-bottom: 0.5rem; font-weight: 500; }
+    input { padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; }
+    .btn { padding: 0.75rem; border: none; border-radius: 4px; font-size: 1rem; cursor: pointer; background: #007bff; color: #fff; transition: background 0.2s; }
+    .btn:hover { background: #0056b3; }
+  </style>
+</head>
+<body>
+  <!-- Top Menu Bar with login item id -->
+  <header class="navbar" id="navbar">
+    <div class="brand">COC Stats</div>
+    <nav>
+      <ul>
+        <li><a href="coc_index.html">Search</a></li>
+        <li id="stats" hidden><a  href="mystats.html" >My Stats</a></li>
+        <li id="navLogin"><a href="login.html">Log in</a></li>
+        <li id="navLogout" hidden>Log out</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="form-wrapper">
+    <div class="form-tabs">
+      <button id="loginTab" class="active">Login</button>
+      <button id="registerTab">Register</button>
+    </div>
+    <form id="loginForm" class="active">
+      <label for="loginEmail">Email</label>
+      <input type="email" id="loginEmail" placeholder="you@example.com" required />
+      <label for="loginPassword">Password</label>
+      <input type="password" id="loginPassword" placeholder="********" required />
+      <button type="submit" class="btn">Login</button>
+    </form>
+    <form id="registerForm">
+      <label for="regName">Name</label>
+      <input type="text" id="regName" placeholder="Your Name" required />
+      <label for="regEmail">Email</label>
+      <input type="email" id="regEmail" placeholder="you@example.com" required />
+      <label for="regPassword">Password</label>
+      <input type="password" id="regPassword" placeholder="********" required />
+      <button type="submit" class="btn">Register</button>
+    </form>
+  </div>
+
+  <script>
+ document.addEventListener('DOMContentLoaded', () => {
+    const navLogout = document.getElementById('navLogout');
+    const navLogin  = document.getElementById('navLogin');
+    const stats     = document.getElementById('stats');
+    const storedUser = localStorage.getItem('username');
+
+    if (storedUser) {
+      navLogin.innerHTML = `<a href="#">${storedUser}</a>`;
+      stats.hidden       = false;
+      navLogout.hidden   = false;
+    } else {
+      stats.hidden     = true;
+      navLogin.hidden  = false;
+      navLogout.hidden = true;
+    }
+
+    // expose the helper for login.js
+    window.setUsernameNav = (username) => {
+      localStorage.setItem('username', username);
+      navLogin.innerHTML = `<a href="#">${username}</a>`;
+    };
+
+  });  <!-- ← close the DOMContentLoaded handler here -->
+  </script>
+  <script src="login.js">
+
+  </script>
+</body>
+</html>

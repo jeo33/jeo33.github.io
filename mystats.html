@@ -1,8 +1,179 @@
-const API_BASE = 'http://35.183.132.145:5000';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>COC Login / Register</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    /* ==== Menu Bar Styles ==== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #007bff;
+      color: #fff;
+      padding: 0 1rem;
+      z-index: 1000;
+      font-family: 'Roboto', sans-serif;
+    }
+    .navbar .brand { font-size: 1.25rem; font-weight: 700; }
+    .navbar nav ul { display: flex; gap: 1rem; list-style: none; margin: 0; padding: 0; }
+    .navbar nav a { color: #fff; text-decoration: none; padding: 0.5rem; }
+    .navbar nav a:hover { background: rgba(255,255,255,0.2); border-radius: 4px; }
+
+
+
+
+
+
+       #profileTable {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+    }
+    #profileTable th,
+    #profileTable td {
+      padding: .75rem;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    #profileTable th {
+      background: #007bff;
+      color: #fff;
+      font-weight: 600;
+    }
+    .bottom-tables {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+    }
+    .bottom-tables table {
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      overflow: hidden;
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .bottom-tables thead {
+      background: #007bff;
+      color: #fff;
+    }
+    .bottom-tables th,
+    .bottom-tables td {
+      padding: .5rem;
+      border-bottom: 1px solid #eee;
+      font-size: .9rem;
+    }
+    .bottom-tables tbody tr:nth-child(even) {
+      background: #fafafa;
+    }
+    .bottom-tables tbody tr:hover {
+      background: #f1faff;
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Menu Bar with login item id -->
+  <header class="navbar" id="navbar">
+    <div class="brand">COC Stats</div>
+    <nav>
+      <ul>
+        <li><a href="coc_index.html">Search</a></li>
+        <li id="stats" hidden><a  href="mystats.html" >My Stats</a></li>
+        <li id="navLogin"><a href="login.html">Log in</a></li>
+        <li id="navLogout" hidden>Log out</a></li>
+      </ul>
+    </nav>
+  </header>
+<div id="error" class="error"></div>
+  <div>
+    
+    <!-- Full-width Profile Table -->
+    <table id="profileTable" hidden>
+      <thead>
+        <tr><th>Field</th><th>Value</th></tr>
+      </thead>
+      <tbody><!-- filled by JS --></tbody>
+    </table>
+
+    <!-- Five tables on one line below -->
+    <div class="bottom-tables">
+      <table id="heroes-table" hidden>
+        <thead><tr><th>Hero</th><th>Level</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <table id="troops-table" hidden>
+        <thead><tr><th>Troop</th><th>Level</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <table id="spells-table" hidden>
+        <thead><tr><th>Spell</th><th>Level</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <table id="pet-table" hidden>
+        <thead><tr><th>Pet</th><th>Level</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <table id="siege-table" hidden>
+        <thead><tr><th>Siege</th><th>Level</th></tr></thead>
+        <tbody></tbody>
+      </table>
+  </div>
+</body>
+
+
+
+  <script>
+
+
+    document.getElementById('navLogout').addEventListener('click',()=>{
+      localStorage.removeItem('username');
+      window.location.href = 'coc_index.html';
+    })
+    const ac=document.getElementById('stats');
+    
+
+    document.addEventListener('DOMContentLoaded', () => {
+  const navLogin  = document.getElementById('navLogin');
+  const navLogout = document.getElementById('navLogout');
+  const stats     = document.getElementById('stats');
+
+  // 1) Show/hide nav items on load
+  const user = localStorage.getItem('username');
+  if (user) {
+    navLogin.hidden  = true;
+    navLogout.hidden = false;
+    stats.hidden     = false;
+    stats.textContent = `${user}`;
+  }
+
+  // 2) Hook the click
+  stats.addEventListener('click', e => {
+    e.preventDefault();                // ➜ Prevent navigation immediately
+
+    // You can drop the nav-toggle here since it's already set on load
+    const tag = localStorage.getItem('tag');
+    console.log('looking up tag=', tag);
+    lookup();
+  });
+
+  // 3) Logout
+  navLogout.addEventListener('click', e => {
+    e.preventDefault();
+    localStorage.clear();
+    // Optionally reload or re-compute the nav UI here
+  });
+});
+
+
 const entity_img="resources/img/"
-    const btn = document.getElementById('searchBtn');
-    const input = document.getElementById('tagInput');
-    const errorDiv = document.getElementById('error');
     const table = document.getElementById('profileTable');
     const tableHeros = document.getElementById('heroes-table');
     const tableTroops = document.getElementById('troops-table');
@@ -15,7 +186,8 @@ const entity_img="resources/img/"
     const tbodySpells = tableSpells.querySelector('tbody');
     const tbodyPet = tablePet.querySelector('tbody');
     const tbodySiege = tableSiege.querySelector('tbody');
-
+    const API_BASE = 'http://35.183.132.145:5000';
+    const errorDiv = document.getElementById('error');
     function showError(msg) {
       errorDiv.textContent = msg;
       table.hidden = true;
@@ -26,7 +198,6 @@ const entity_img="resources/img/"
     }
 
     function populateTable(data) {
-      // clear old rows
       
       tbody.innerHTML = '';
       // pick a few key fields
@@ -46,14 +217,10 @@ const entity_img="resources/img/"
         tbody.appendChild(tr);
       }
       table.hidden = false;
+
+
+
       const troopsArray = data.troops;
-
-
-
-
-
-
-      // Loop and log each element:
       troopsArray.forEach(element => {
       const id = getKeyByValue(entity, element.name);
         if (id === undefined) return;  // no mapping, skip
@@ -89,7 +256,7 @@ const entity_img="resources/img/"
         else tbodyTroops.appendChild(tr);
       });
       tableTroops.hidden = false;
-      tablePet.hidden = false;
+tablePet.hidden = false;
       tableSiege.hidden = false;
 
 
@@ -162,7 +329,9 @@ const entity_img="resources/img/"
     }
 
     function lookup() {
-      const tag = input.value.trim();
+      
+    const tag = localStorage.getItem('tag');
+    console.log('looking up tag=', tag);
       if (!tag) {
         return showError('Please enter a valid tag.');
       }
@@ -191,14 +360,12 @@ const entity_img="resources/img/"
       xhr.send();
     }
 
-    btn.addEventListener('click', lookup);
-    input.addEventListener('keydown', e => {
-      if (e.key === 'Enter') lookup();
-    });
-function getKeyByValue(obj, value) {
+
+    function getKeyByValue(obj, value) {
   const entry = Object.entries(obj).find(([key, val]) => val === value);
   return entry ? entry[0] : undefined;
 }
+
 const siege_entity =[
   125,134,120,109,106,105
 ]
@@ -385,3 +552,5 @@ const super_entity = [
 132:"Unicorn",
 141:"Frosty"
 });
+  </script>
+</html>
